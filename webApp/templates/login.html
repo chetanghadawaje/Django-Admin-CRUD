@@ -1,0 +1,28 @@
+{% extends 'main.html' %}
+
+{% block content %}
+{% for message in messages %}
+<div class="alert text-danger" role="alert">
+    <strong>Login failed!</strong> {{ message }}
+</div>
+{% endfor %}
+
+<form class="p-2" action="{% url 'webapp:login' %}" method="post">
+    {% csrf_token %}
+    <div class="form-group row">
+        <label for="id_username" class="col-sm-2 col-form-label">UserName</label>
+        <div class="col-sm-6">
+            {{ form.username }}
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="id_password" class="col-sm-2 col-form-label">Password</label>
+        <div class="col-sm-6">
+            {{ form.password }}
+        </div>
+    </div>
+    <button type="submit">Login</button>
+    <a href="{% url 'webapp:signup' %}"><button type="button">Sinup</button></a>cre
+</form>
+
+{% endblock %}

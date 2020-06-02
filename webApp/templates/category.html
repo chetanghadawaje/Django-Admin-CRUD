@@ -1,0 +1,21 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<form action="{% url 'webapp:category' %}" method="post">
+    {% csrf_token %}
+    <div class="form-group row">
+        <label for="id_name" class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-6">
+            {{ form.name }}
+        </div>
+    </div>
+    <button type="submit">Create</button>
+</form>
+
+{% for object in objects %}
+{{object.name}} <br>
+{% endfor %}
+
+{% endblock %}
+
